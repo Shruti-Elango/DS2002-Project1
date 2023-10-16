@@ -1,0 +1,8 @@
+BEGIN CATCH
+    IF ERROR_NUMBER() = 12029  -- This error code is just an example
+        SELECT 'An Error Connecting to the API occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+    ELSE IF ERROR_NUMBER() = 12030 -- Another example error code
+        SELECT 'A Timeout Error occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+    ELSE
+        SELECT 'An Unknown Error occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
