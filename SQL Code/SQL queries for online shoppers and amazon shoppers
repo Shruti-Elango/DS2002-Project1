@@ -1,0 +1,42 @@
+# Author one or more SQL queries (SELECT statements) to demonstrate proper funcMonality.
+
+# ONLINE SHOPPERS
+USE online_shoppers;
+# 1. average product related duration for all visitors per browser
+SELECT browser, AVG(productrelated_duration) AS avg_duration
+FROM online_shoppers
+GROUP BY browser;
+
+# 2. visitors with high product-related activity
+SELECT visitortype, COUNT(*) AS visitors_high_activity
+FROM online_shoppers
+WHERE productrelated > 10
+GROUP BY visitortype;
+
+# 3. total duration spent on product related pages
+SELECT visitortype, SUM(productrelated_duration) AS total_productrelated_duration
+FROM online_shoppers
+GROUP BY visitortype;
+
+# 4. counting number of returning vistors
+SELECT visitortype, COUNT(*) AS returning_visitor
+FROM online_shoppers
+WHERE visitortype = 'RETURNING'
+GROUP BY visitortype;
+
+# AMAZON SHOPPING
+USE amazon_shoppers;
+# 1. average rating based on products in each category
+SELECT category, AVG(rating) AS average_rating
+FROM amazon_shoppers
+GROUP BY category;
+
+#2. number of products in each category
+SELECT category, COUNT(*) AS product_count
+FROM amazon_shoppers
+GROUP BY category;
+
+#3. total sum of actual prices for products in each category, also grouped by rating
+SELECT category, rating, SUM(actual_price) AS total_price
+FROM amazon_shoppers
+GROUP BY category, rating;
