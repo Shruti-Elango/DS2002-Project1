@@ -64,3 +64,26 @@ INTO TABLE Shopping_CustomerData
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n' 
 IGNORE 1 ROWS;
+
+ALTER TABLE Shopping_CustomerData 
+ADD CustomerID INT NOT NULL;
+
+ALTER TABLE Shopping_CustomerData 
+ALTER COLUMN AnnualIncome DECIMAL(10, 10);
+
+ALTER TABLE Shopping_CustomerData 
+RENAME CustomerGender TO Gender;
+
+
+# INSERT API
+
+
+BEGIN CATCH
+    IF ERROR_NUMBER() = 12029  -- This error code is just an example
+        SELECT 'An Error Connecting to the API occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+    ELSE IF ERROR_NUMBER() = 12030 -- Another example error code
+        SELECT 'A Timeout Error occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+    ELSE
+        SELECT 'An Unknown Error occurred: ' + ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;
+
