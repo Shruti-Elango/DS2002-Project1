@@ -46,3 +46,21 @@ INSERT INTO amazon_shoppers (product_id, product_name, category, actual_price, r
     (B08DDRGWTJ, ‘MI Usb Type-C Cable Smartphone (Black)’, ‘USBCables’, 299 , 4.3),
     (B08IFXQFU, ‘TP-Link USB WiFi Adapter for PC(TL-WN725N), N150 Wireless Network Adapter for Desktop - Nano Size WiFi Dongle Compatible with Windows 11/10/7/8/8.1/XP/ Mac OS 10.9-10.15 Linux Kernel 2.6.18-4.4.3’, ‘WirelessUSBAdapters’, 999, 4.2),
     (B082LZGK39, ‘Ambrane Unbreakable 60W / 3A Fast Charging 1.5m Braided Micro USB Cable for Smartphones, Tablets, Laptops & Other Micro USB Devices, 480Mbps Data Sync, Quick Charge 3.0 (RCM15, Black)’, ‘USBCables’, 299, 4 );
+
+
+CREATE TABLE Shopping_CustomerData (
+  CustomerID INT,
+  CustomerGender VARCHAR(100),
+  CustomerAge INT,
+  CustomerCity VARCHAR(100), 
+  AnnualIncome INT, 
+  CreditScore INT,
+  SpendingScore INT,
+  CustomerCityID INT
+);
+
+LOAD DATA INFILE Shopping_CustomerData.csv' 
+INTO TABLE Shopping_CustomerData 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 ROWS;
