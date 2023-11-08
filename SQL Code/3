@@ -40,3 +40,10 @@ GROUP BY category;
 SELECT category, rating, SUM(actual_price) AS total_price
 FROM amazon_shoppers
 GROUP BY category, rating;
+
+# AMAZON SHOPPERS AFTER API CALL
+# 1. number of products with a rating > 4
+SELECT rating, COUNT(*) AS high_rating
+FROM amazon_shoppers
+WHERE rating > 4
+GROUP BY rating;
